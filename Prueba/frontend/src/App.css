@@ -1,0 +1,639 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F0F4F8;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1; /* Permite que el body ocupe el espacio restante */
+
+}
+
+.fondo{
+    background-color: #003366; 
+}
+
+.menu {
+    width: 250px;
+    background-color: #003366;
+    color: white;
+    position: fixed; /* Mantener el menú fijo */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Asegúrate de que ocupe toda la altura de la ventana */
+    z-index: 1000; /* Asegúrate de que el menú esté por encima de otros elementos */
+}
+
+.menu.open {
+    display: block; /* Muestra el menú cuando está abierto */
+}
+
+.menu-header {
+    background-color: #f35555;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000; /* Asegúrate de que el botón esté por encima de otros elementos */
+    position: relative; /* Asegúrate de que el botón sea visible */
+}
+
+.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0; /* Asegúrate de que no haya margen */
+}
+
+.menu-items li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 15px; /* Espaciado interno para los elementos del menú */
+}
+
+.menu-items a {
+    text-decoration: none;
+    color: #FFFFFF;
+    display: block;
+}
+
+.menu-items a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el mouse */
+}
+
+.dropdown-toggle::after {
+    content: ' ▼';
+    float: right;
+}
+
+.submenu {
+    display: none; /* Ocultar el submenú por defecto */
+    list-style: none;
+    padding: 0;
+}
+
+.menu-items .dropdown:hover .submenu {
+    display: block; /* Mostrar el submenú al pasar el mouse */
+}
+
+
+
+main {
+    margin-left: 150px; /* Asegúrate de que coincida con el ancho del menú */
+    padding: 20px;
+    flex: 1;
+    min-height: calc(100vh - 100px); /* Ajusta según la altura del footer */
+}
+
+.service-section {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.service-section h2 {
+    text-align: center;
+    width: calc(10% 200px);
+    margin-left: 250px; 
+    margin-right: 30px;
+    background-color: #f35555;
+    color: #FFFFFF;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    padding: 15px 90px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los productos se envuelvan */
+    justify-content: center; /* Centra los productos */
+    gap: 30px; /* Espacio entre los productos */
+    margin-left: 160px;
+}
+
+.product {
+    border: 1px solid #ccc; /* Borde alrededor de cada producto */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    text-align: center; /* Centrar texto */
+    background-color: #fff; /* Fondo blanco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+    width: 200px; /* Ancho fijo para los productos */
+
+}
+
+.product img {
+    width: 100%; /* Ancho completo de la imagen */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-radius: 5px; /* Bordes redondeados para la imagen */
+    margin-bottom: 20px;
+}
+
+
+
+
+.trabajos-container {
+    flex-direction: column; /* Cambia la dirección del flex a columna para apilar trabajos */
+    align-items: center; /* Centra los trabajos en la pantalla */
+}
+
+.trabajo {
+    width: 100%; /* Los trabajos ocuparán el 100% del ancho */
+    margin: 10px 0; /* Espacio vertical entre trabajos */
+}
+    
+    
+    
+
+
+.product-submenu {
+    list-style: none;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-left: 150px;
+}
+
+.product-submenu li {
+    margin: 5px;
+}
+
+.product-submenu a {
+    text-decoration: none;
+    background-color: #F0F4F8;
+    color: #333333;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    min-width: 120px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-submenu a:hover {
+    background-color: #f35555;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.cerrar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#imagenProducto {
+    width: 100%;
+    height: auto;
+    
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+   
+
+
+
+
+
+
+.tooltip {
+    display: inline-block;
+    position: relative;
+}
+
+.tooltip:hover::after {
+    position: absolute;
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    top: 100%;
+    /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    flex: 1; /* Permite que el body ocupe el espacio restante */
+}
+
+main {
+    flex: 1; /* Permite que el main ocupe el espacio restante */
+}
+
+.p {
+    text-align: center; /* Centra el texto */
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 500px; /* Ancho máximo del párrafo */
+    margin: 10px auto 0; /* Auto para centrar horizontalmente */
+    color: #333;
+}
+
+/* Codigo  */
+
+
+
+
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+
+}
+
+.card {
+background-color: #ffffff;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+max-width: 600px;
+margin: 100px auto;
+padding: 60px;
+text-align: center;
+position: relative; /* Asegura que el nuevo card se posicione encima del original #f3f0ed  #7b8579 */
+}
+
+header {
+margin-bottom: 40px;
+}
+
+h1 {
+font-size: 30px;
+color: #0c0c0c;
+}
+
+.input-group {
+margin-bottom: 25px;
+text-align: left;
+}
+
+label {
+font-size: 17px;
+color: #070606;
+}
+
+input {
+width: 95%;
+padding: 8px;
+border: 1px solid #af282f;
+background-color: #ccc;
+border-radius: 5px;
+font-size: 16px;
+}
+
+.button1 {
+width: 38%;
+padding: 10px;
+background-color: #af282f;
+color: rgb(255, 255, 255);
+border: none;
+border-radius: 10px;
+cursor: pointer;
+font-size: 16px;
+margin: 0 01%;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    gap: 10px; /* Espacio entre los botones */
+    margin-bottom: 20px; /* Espacio debajo de los botones */
+}
+
+.button-group button {
+    padding: 10px 20px;
+    background-color: #f35555; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-group button:hover {
+    background-color: #d44; /* Color al pasar el mouse */
+}
+
+button:hover {
+background-color: #af282f; /* o se deja en verde o cambiar color */
+color: white;
+}
+
+.button2 {
+width: 48%;
+padding: 10px;
+background-color: #af282f;
+color: rgb(255, 255, 255);
+border: none;
+border-radius: 10px;
+cursor: pointer;
+font-size: 16px;
+margin: 0 1%;
+margin-top: 20px;
+}
+
+/* Fondo difuminado B894A3  #858479*/
+.blur {
+filter: blur(5px);
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.6);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+.confirmation-card {
+background-color: #fff;
+padding: 20px;
+border-radius: 15px;
+text-align: center;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+max-width: 400px;
+width: 80%;
+}
+
+.confirmation-card p {
+margin-bottom: 20px;
+font-size: 18px;
+color: #333;
+}
+
+.confirmation-card button {
+background-color: #af282f;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+}
+
+.confirmation-card button:hover {
+background-color: #af282f;
+}
+
+/* Card rojo que aparece encima */
+.top-card {
+position: absolute;
+top: -200px; /* Ajusta la posición para que esté sobre el card existente */
+left: 50%; /* Centra horizontalmente respecto al card original */
+transform: translateX(-50%);
+background-color: #af282f;
+color: white;
+padding: 20px;
+border-radius: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+max-width: 250px;
+}
+
+.top-card h2 {
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.top-card p {
+font-size: 14px;
+}
+
+.red-card {
+background-color: #af282f;
+color: white;
+padding: 10px 15px;
+border-radius: 0 0 100% 0;
+position: absolute;
+top: 0;
+left: 0;
+width: 80px;
+height: 80px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 14px;
+clip-path: polygon(0 0, 200% 0, 0 200%);
+}
+
+
+.logo {
+    width: 70px;
+    height: 60px;
+    object-fit: contain;
+    margin-right: 10px;
+    margin-top: -10px;
+}
+
+.button {
+    background-color: #ac3535;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 3px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 1px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #c72a2f;
+    transform: scale(1.05);
+}
+
+/* Estilos necesarios para Recibo.jsx */
+.container {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.company-info {
+    background-color: #FF0000;
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 70% 0;
+    margin-left: -20px;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.invoice-details {
+    text-align: right;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.company-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.qr-code {
+    position: absolute;
+    bottom: 20px;
+    left: 820px;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    background-color: #FF0000;
+    border-radius: 100% 0 0 0;
+}
+
+.download-circle {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    top: 20px;
+    right: 20px;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.download-circle:hover {
+    background-color: #9e2b2b;
+}
+
+.download-icon {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+/* Estilos para la tabla del recibo */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.summary {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.payment-info {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    header {
+        flex-direction: column;
+    }
+    .invoice-details {
+        text-align: left;
+        margin-top: 10px;
+    }
+    table, th, td {
+        font-size: 0.9em;
+    }
+}
